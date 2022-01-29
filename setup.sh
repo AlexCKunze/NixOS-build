@@ -17,9 +17,9 @@ cat gigachad.txt
 
 source ~/.bashrc
 
-echo "Within the extra directory located in ~/Documents/Nixos-build/temp"
+echo "Within the extra directory located in ~/Documents/Nixos-build/extra"
 echo "is my NixOS configuration file, I would recommend adding whatever you"
-echo "want you yours."
+echo "want to you yours."
 echo "To install nerdtree on neovim just do :PlugInstall > Enter"
 
 
