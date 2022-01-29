@@ -26,7 +26,7 @@ echo -e "ASSIMILATION HAS COMPLETED"
 
 source ~/.bashrc
 
-echo -e "Within the extra directory located in ~/Documents/Nixos-build/extra"
+echo -e "Within the extra directory located in ~/Nixos-build/extra"
 echo -e "is my NixOS configuration file, I would recommend adding whatever you"
 echo -e "want to you yours."
 echo -e "To install nerdtree on neovim just do :PlugInstall > Enter"
