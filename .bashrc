@@ -17,6 +17,7 @@ alias dm4aplaylistaudio='youtube-dl -f bestaudio[ext=m4a] --yes-playlist'
 alias dsoundeffect='youtube-dl --extract-audio --audio-format mp3'
 alias cfv='nvim ~/.config/nvim/init.vim'
 alias cfvp='nvim ~/.config/nvim/vim-plug/plugins.vim'
+alias cft='nvim ~/.tmux.conf'
 alias p='python'
 alias sb='source ~/.bashrc'
 #Nixos Aliases

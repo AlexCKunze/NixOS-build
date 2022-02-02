@@ -1,0 +1,8 @@
+app=/nix/store/a0szzrnc56qcy6a0nymz48clsz8a2hwv-brave-1.25.68/bin/brave
+last_user=
+screenshot_dir=file:///home/sarcasticdream/Pictures
+action=1
+delay=1
+region=3
+show_mouse=1
+
