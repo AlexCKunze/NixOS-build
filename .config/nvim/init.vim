@@ -1,8 +1,6 @@
 source $HOME/.config/nvim/vim-plug/plugins.vim
 :syntax on
 colorscheme substrata
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 let g:webdevicons_enable_nerdtree = 1
 :tnoremap <Esc> <C-\><C-n>
@@ -15,21 +13,28 @@ set expandtab
 filetype indent on
 set autoindent
 set smartindent
-set nu
+set number
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set nowrap
-""inoremap " ""<left>
-""inoremap ' ''<left>
-""inoremap ( ()<left>
-""inoremap [ []<left>
-""inoremap { {}<left>
-""inoremap {<CR> {<CR>}<ESC>O
-""inoremap {;<CR> {<CR>};<ESC>O
-""inoremap < <><left>
+"inoremap " ""<left>
+"inoremap ' ''<left>
+"inoremap ( ()<left>
+"inoremap [ []<left>
+"inoremap { {}<left>
+"inoremap {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O
+"inoremap < <><left>
 hi Normal guibg=NONE ctermbg=NONE
 set nohlsearch
 set mouse=a
+set relativenumber
+" Tab
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <A-t> :tabnew<CR>
+nnoremap <silent> <A-1> :tabmove +<CR>
+nnoremap <silent> <A-2> :tabmove -<CR>
