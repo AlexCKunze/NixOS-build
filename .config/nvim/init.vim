@@ -5,7 +5,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:webdevicons_enable_nerdtree = 1
 :tnoremap <Esc> <C-\><C-n>
 set background=dark
-:let g:NERDTreeWinSize=17
+:let g:NERDTreeWinSize=19
 set listchars=tab:>-
 set shiftwidth=4
 set tabstop=4 softtabstop=4
