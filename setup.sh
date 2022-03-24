@@ -19,7 +19,7 @@ fullFunc() {
     echo -e "ASSIMILATION HAS COMPLETED"
 
 
-    # source ~/.bashrc
+    source ~/.bashrc
 
     echo -e "Within the extra directory located in ~/Nixos-build/extra"
     echo -e "is my NixOS configuration file, I would recommend adding whatever you"
