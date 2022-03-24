@@ -69,6 +69,8 @@
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "ratbagd" "wireshark" "disk" ]; # Enable ‘sudo’ for the user.
   };
 
+  # programs.fish.enable = true;
+  # users.users.sarcasticdream.shell = pkgs.fish;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -85,12 +87,11 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget git curl python3 flatpak
-    neovim unzip zip tmux lm_sensors pfetch geany baobab gnome.gnome-disk-utility 
+    neovim unzip zip tmux lm_sensors pfetch geany baobab gnome.gnome-disk-utility xclip picom openvpn gcc 
     i3-gaps dmenu alacritty nitrogen rofi
     etcher gnome.gucharmap
     brave #ungoogled-chromium
     qtox
-    protonvpn-gui
     keepassxc bitwarden
     veracrypt
     gimp krita
@@ -100,16 +101,16 @@
     gnome3.gnome-calculator
     gnome.file-roller
     xfce.ristretto xfce.xfce4-whiskermenu-plugin
-    wireshark nmap dig youtube-dl
+    wireshark nmap dig yt-dlp gnome.networkmanager-openvpn
     virt-manager spice-gtk
     mpd ncmpcpp
     libreoffice
     obs-studio
     celluloid #vlc
-    blender #olive-editor #kdeApplications.kdenlive #20.09 #kdenlive
+    blender 
     arc-theme
     lxappearance
-    multimc #steam
+    multimc
     stellarium
     libratbag piper
   ];
@@ -119,7 +120,7 @@
   programs.dconf.enable = true;
   services.flatpak.enable = true;
   programs.wireshark.enable = true;
-  # programs.steam.enable = true;
+  # programs.steam.enable = true; #Currently using flatpak Steam
 
  
   xdg.portal = {
@@ -162,8 +163,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ];
-  # networking.firewall.allowedUDPPorts = [ ];
+  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking.firewall.allowedUDPPorts = [ 25565 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -173,7 +174,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system.stateVersion = "21.11"; # Did you read the comment?
 
 }
 

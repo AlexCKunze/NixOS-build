@@ -9,9 +9,13 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " File Explorer
-    Plug 'scrooloose/NERDTree'
+    Plug 'preservim/nerdtree'
 
     " Special Icons
     Plug 'https://github.com/ryanoasis/vim-devicons'
+
+    " LSP
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
 
 call plug#end()

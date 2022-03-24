@@ -1,3 +1,10 @@
+"  _   _                 _           
+" | \ | |               (_)          
+" |  \| | ___  _____   ___ _ __ ___  
+" | . ` |/ _ \/ _ \ \ / / | '_ ` _ \ 
+" | |\  |  __/ (_) \ V /| | | | | | |
+" \_| \_/\___|\___/ \_/ |_|_| |_| |_|
+" 
 source $HOME/.config/nvim/vim-plug/plugins.vim
 :syntax on
 colorscheme substrata
@@ -5,7 +12,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:webdevicons_enable_nerdtree = 1
 :tnoremap <Esc> <C-\><C-n>
 set background=dark
-:let g:NERDTreeWinSize=19
+:let g:NERDTreeWinSize=17
 set listchars=tab:>-
 set shiftwidth=4
 set tabstop=4 softtabstop=4
@@ -63,3 +70,6 @@ set clipboard+=unnamedplus
 
 " Replace all shiz
 nnoremap S :%s//g<Left><Left>
+
+" Allows Transparency with different themes
+hi Normal guibg=NONE ctermbg=NONE

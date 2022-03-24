@@ -196,6 +196,7 @@ exec_always --no-startup-id picom &
 #redshift
 
 bindsym Mod1+a exec flameshot gui
+bindsym Print exec flameshot gui
 
 # change gaps size
 bindsym $mod+Shift+t gaps inner current set 4; gaps outer current set 0
