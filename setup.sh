@@ -12,7 +12,7 @@ fullFunc() {
     cat gigachad.txt
 
     mkdir -p ~/Pictures/wallpaper && cd ~/Pictures/wallpaper/ > /dev/null
-    wget -q https://cdn.discordapp.com/attachments/658513471813713950/936805613630017546/knight.jpg
+    wget -q https://cdn.discordapp.com/attachments/658513471813713950/956399495317438464/florian-van-duyn-Dm-qxdynoEc-unsplash.jpg 
      
     fc-cache -fv > /dev/null
     echo -e " "
