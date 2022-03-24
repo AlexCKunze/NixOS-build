@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#Author: SarcasticDream
 
 fullFunc() {
     echo -e "*********************************************************************\n"
