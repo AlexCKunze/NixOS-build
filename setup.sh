@@ -58,7 +58,7 @@ then
         cp -r .config/nvim* ~/.config/ > /dev/null 
         cp -r .local/share/nvim ~/.local/share/ > /dev/null
         echo "++Neovim Configuration Installed++"
-    elif [ "$myvar" == "2" ]
+    elif [ "$myVar" == "2" ]
     then
         cp -r .tmux.conf ~/ > /dev/null
         echo "++Tmux Configuration Installed++"
