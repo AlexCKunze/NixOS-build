@@ -43,11 +43,10 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 
-  #Lightdm Configuartion
+  # Lightdm Configuartion
   services.xserver.displayManager.lightdm.background = /root/wallpaper/storm.jpg;
   services.xserver.displayManager.lightdm.greeters.gtk.theme.name = "Arc-Dark";
   services.xserver.displayManager.lightdm.greeters.gtk.iconTheme.name = "Sardi-Mono-Colora"; 
-
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -89,7 +88,8 @@
     wget git curl python3 flatpak
     neovim unzip zip tmux lm_sensors pfetch geany baobab gnome.gnome-disk-utility xclip picom openvpn gcc 
     i3-gaps dmenu alacritty nitrogen rofi
-    etcher gnome.gucharmap
+    #etcher to the right of gnome.gucharmap
+    gnome.gucharmap
     brave #ungoogled-chromium
     qtox
     keepassxc bitwarden
@@ -110,7 +110,7 @@
     blender 
     arc-theme
     lxappearance
-    multimc
+    #multimc
     stellarium
     libratbag piper
   ];
@@ -135,6 +135,7 @@
   hardware.pulseaudio.support32Bit = true;
 
   services.ratbagd.enable = true;
+  services.xserver.libinput.mouse.middleEmulation = false;
 
   services.xserver.libinput.enable = true;
   services.xserver.config = ''
@@ -163,8 +164,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 25565 ];
-  networking.firewall.allowedUDPPorts = [ 25565 ];
+  # networking.firewall.allowedTCPPorts = [ 25565 ];
+  # networking.firewall.allowedUDPPorts = [ 25565 ];
+  networking.firewall.allowedTCPPorts = [ 8384 ];
+  networking.firewall.allowedUDPPorts = [ 8384 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -174,7 +177,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "21.05"; # Did you read the comment?
 
 }
 
