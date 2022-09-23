@@ -44,9 +44,9 @@
   services.xserver.desktopManager.xfce.enable = true;
 
   # Lightdm Configuartion
-  services.xserver.displayManager.lightdm.background = /root/wallpaper/storm.jpg;
-  services.xserver.displayManager.lightdm.greeters.gtk.theme.name = "Arc-Dark";
-  services.xserver.displayManager.lightdm.greeters.gtk.iconTheme.name = "Sardi-Mono-Colora"; 
+  # services.xserver.displayManager.lightdm.background = /root/wallpaper/storm.jpg;
+  # services.xserver.displayManager.lightdm.greeters.gtk.theme.name = "Arc-Dark";
+  # services.xserver.displayManager.lightdm.greeters.gtk.iconTheme.name = "Sardi-Mono-Colora"; 
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -65,7 +65,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sarcasticdream = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "ratbagd" "wireshark" "disk" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "ratbagd" "wireshark" "disk" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   # programs.fish.enable = true;
@@ -91,6 +91,7 @@
     #etcher to the right of gnome.gucharmap
     gnome.gucharmap
     brave #ungoogled-chromium
+    rocm-opencl-runtime rocminfo
     qtox
     keepassxc bitwarden
     veracrypt
@@ -117,6 +118,7 @@
 
  
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
   programs.dconf.enable = true;
   services.flatpak.enable = true;
   programs.wireshark.enable = true;
@@ -164,10 +166,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 25565 ];
-  # networking.firewall.allowedUDPPorts = [ 25565 ];
-  networking.firewall.allowedTCPPorts = [ 8384 ];
-  networking.firewall.allowedUDPPorts = [ 8384 ];
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ ... ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
