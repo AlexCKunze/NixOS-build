@@ -44,9 +44,9 @@
   services.xserver.desktopManager.xfce.enable = true;
 
   # Lightdm Configuartion
-  # services.xserver.displayManager.lightdm.background = /root/wallpaper/storm.jpg;
-  # services.xserver.displayManager.lightdm.greeters.gtk.theme.name = "Arc-Dark";
-  # services.xserver.displayManager.lightdm.greeters.gtk.iconTheme.name = "Sardi-Mono-Colora"; 
+  services.xserver.displayManager.lightdm.background = /root/wallpaper/storm.jpg;
+  services.xserver.displayManager.lightdm.greeters.gtk.theme.name = "Arc-Dark";
+  services.xserver.displayManager.lightdm.greeters.gtk.iconTheme.name = "Sardi-Mono-Colora"; 
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -90,11 +90,9 @@
     i3-gaps dmenu alacritty nitrogen rofi
     #etcher to the right of gnome.gucharmap
     gnome.gucharmap
-    brave #ungoogled-chromium
     rocm-opencl-runtime rocminfo
     qtox
     keepassxc bitwarden
-    veracrypt
     gimp krita
     lyrebird #audacity | use flatpak and block internet access
     shotwell
@@ -111,7 +109,6 @@
     blender 
     arc-theme
     lxappearance
-    #multimc
     stellarium
     libratbag piper
   ];
@@ -166,10 +163,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # networking.firewall.allowedTCPPorts = [ ... ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ... ];
+  # networking.firewall.allowedTCPPorts = [ 25565 ];
+  # networking.firewall.allowedUDPPorts = [ 25565 ];
+  networking.firewall.allowedTCPPorts = [ 8384 32222 42069 ];
+  networking.firewall.allowedUDPPorts = [ 8384 32222 42069 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
