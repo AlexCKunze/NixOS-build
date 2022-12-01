@@ -26,7 +26,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set nowrap
+"set nowrap
 "inoremap " ""<left>
 "inoremap ' ''<left>
 "inoremap ( ()<left>
