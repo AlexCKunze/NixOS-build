@@ -43,6 +43,17 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 
+  #services.xserver.displayManager.lightdm.enable = false;
+  #services.xserver.displayManager.startx.enable = true;
+  #services.xserver.windowManager.dwm.enable = true;
+
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+  #      dwm = prev.dwm.overrideAttrs (old: {src = /home/sarcasticdream/Documents/dwm-nixos/dwm ;});
+  #    })
+  #];
+
+
   # Lightdm Configuartion
   services.xserver.displayManager.lightdm.background = /root/wallpaper/storm.jpg;
   services.xserver.displayManager.lightdm.greeters.gtk.theme.name = "Arc-Dark";
@@ -68,8 +79,11 @@
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "ratbagd" "wireshark" "disk" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
-  # programs.fish.enable = true;
-  # users.users.sarcasticdream.shell = pkgs.fish;
+  programs.zsh = {
+      enable = true;
+      syntaxHighlighting.enable = true;
+  };
+  users.users.sarcasticdream.shell = pkgs.zsh;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -165,6 +179,8 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 25565 ];
   # networking.firewall.allowedUDPPorts = [ 25565 ];
+  networking.firewall.allowedTCPPorts = [ 8384 32222 42069 ];
+  networking.firewall.allowedUDPPorts = [ 8384 32222 42069 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
