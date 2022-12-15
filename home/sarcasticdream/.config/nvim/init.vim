@@ -65,6 +65,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" splitting
+nnoremap <C-o> <C-w>s
+nnoremap <C-p> <C-w>v
+
+" Closing windows
+nnoremap <C-q> <C-w>c
+
 " Clipboard shiz
 set clipboard+=unnamedplus
 
