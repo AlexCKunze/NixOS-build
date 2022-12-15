@@ -218,7 +218,7 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   finish
 endif
 
-if s:t_Co >= 256
+""if s:t_Co >= 256
   if !exists('g:substrata_italic_comments')
     let g:substrata_italic_comments = 1
   endif
