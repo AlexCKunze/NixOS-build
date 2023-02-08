@@ -8,10 +8,14 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-    " File Explorer
-    Plug 'preservim/nerdtree'
-
     " Special Icons
     Plug 'https://github.com/ryanoasis/vim-devicons'
+    
+    " LSP shiz
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " Telescope + depends
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 call plug#end()
