@@ -1,0 +1,282 @@
+# dependencies xfce4-panel and xfce4-appfinder
+set $mod Mod4
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym Mod1+Return exec xfce4-terminal
+
+bindsym $mod+Return exec urxvt-256color
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+                            #APPLICATION LAUNCHER#
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+bindsym Mod1+d exec xfce4-popup-whiskermenu
+bindsym Mod1+p exec xfce4-appfinder
+for_window [class="Xfce4-appfinder" instance="xfce4-appfinder"] floating enable
+#bindsym Mod1+p exec i3-dmenu-desktop --dmenu='rofi -dmenu'
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym Mod1+d exec i3-dmenu-desktop
+#bindsym Mod1+d exec rofi -show run -lines 10 -eh 2 -width 30 -opacity "100"
+                            #APPLICATION LAUNCHER#
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Set Xresources colors:
+set_from_resource $darkblack    color0  #000000
+set_from_resource $black    color8  #000000
+set_from_resource $darkred    color1  #000000
+set_from_resource $red        color9  #000000
+set_from_resource $darkgreen    color2  #000000
+set_from_resource $green    color10 #000000
+set_from_resource $darkyellow    color3  #000000
+set_from_resource $yellow    color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta    color5  #000000
+set_from_resource $magenta    color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite    color7  #000000
+set_from_resource $white    color15 #000000
+set $transparent        #00000000
+
+
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#       colors {
+#        background #0f0f0f
+#        statusline #ffffff
+#        separator #666666
+#
+#        focused_workspace  #1c1c1c #292929 $white
+#        active_workspace   #1c1c1c #1c1c1c #ffffff
+#        inactive_workspace #1c1c1c #1c1c1c #888888
+#        urgent_workspace   #1c1c1c #1c1c1c #ffffff
+#        binding_mode       #1c1c1c #1c1c1c #ffffff
+#    }
+#    font pango:monospace 10
+#    status_command ~/.config/bumblebee-status/bumblebee-status -m pasink pasource uptime datetime kernel -p disk.path=/home datetime.format="%a %d %b %Y %I:%M:%S%p" -t iceberg
+#position top
+#    }
+
+exec_always xfce4-panel
+
+#disk# 
+exec nm-applet
+
+#exec_always pulseaudio
+
+exec --no-startup-id nitrogen --restore
+
+#exec_always killall compton
+#exec_always compton
+
+bindsym Mod1+h exec killall pulseaudio && exec pulseaudio
+bindsym Mod1+c exec killall compton
+bindsym Mod1+v exec compton
+
+#redshift
+#exec_always redshift-gtk
+#redshift
+
+#exec_always wal -i /home/kayakalot/Pictures/.config/wall.png
+
+# change gaps size
+bindsym $mod+Shift+t gaps inner current set 4; gaps outer current set 0
+bindsym $mod+Shift+s gaps inner current plus 4
+bindsym $mod+Shift+f gaps inner current minus 4
+bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
+
+# gapsconfig
+
+# previous | for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
+# previous | gaps inner 4
+gaps inner 4
+gaps outer 0
+
+# gapsconfig
+
+# ranger
+bindsym Mod1+Shift+d exec --no-startup-id urxvt-256color -e ranger
+bindsym Mod1+Shift+m exec --no-startup-id urxvt-256color -e ncmpcpp
+bindsym Mod1+Shift+k exec killall mpd
+#Tor shorcut
+#bindsym Mod1+t exec --no-startup-id firejail /home/kayakalot/tor-browser-linux64-8.0.5_en-US/tor-browser_en-US/Browser/start-tor-browser
+#Minecraft shortcut
+#bindsym Mod1+m exec --no-startup-id /home/kayakalot/MCscript.sh
+#Teamspeak shortcut
+#bindsym Mod1+o exec --no-startup-id /home/kayakalot/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh
+#obs shortcut
+#bindsym Mod1+u exec --no-startup-id flatpak run com.obsproject.Studio
+#killall i3bar
+bindsym Mod1+l exec killall xfce4-panel
+#exec i3bar
+bindsym Mod1+k exec xfce4-panel
+#Kdenlive Shortcut
+#bindsym Mod1+k exec --no-startup-id flatpak run org.kde.kdenlive
+#audacity shortcut
+#bindsym Mod1+y exec --no-startup-id flatpak run org.audacityteam.Audacity
+#Pycharm IDE shortcut
+#bindsym Mod1+h exec --no-startup-id /home/kayakalot/pycharm-community-2018.2.4/bin/pycharm.sh
+
+#Pywal
+
+#exec wal -i ~/.config/wall.png
+
+#killall java/minecraft
+bindsym Mod1+j exec killall java
+#exec_always killall polybar launch.sh
+#exec_always polybar example
+
+exec xrdb .Xresources
+
+#Locks system
+bindsym $mod+Shift+x exec i3lock -i ~/Documents/i3lock/thing.png
+
+#NON IMPORTANT STUFF
+
+set_from_resource $fg i3wm.color0 #282a2e
+set_from_resource $bg i3wm.color6 #282a2e
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #2c363d #3c464d #ffffff #7e7e7e   #a7a7a7
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #7d7d7d
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #282a2e
