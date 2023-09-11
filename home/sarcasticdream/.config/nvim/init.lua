@@ -10,6 +10,9 @@
 
 -- Grabs some stuff
 require("sarcasticdream")
+--
+-- Source coc config
+vim.api.nvim_command('source $HOME/.config/nvim/vconfs/coc.vim')
 
 -- Enable syntax highlighting
 vim.api.nvim_command('syntax on')
