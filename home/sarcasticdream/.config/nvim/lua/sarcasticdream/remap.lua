@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>zx", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>xz", vim.cmd.Rex)
 
 -- Mega based netrw file manager
 vim.keymap.set("n", "<leader>zx", vim.cmd.Ex)

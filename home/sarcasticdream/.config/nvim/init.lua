@@ -10,7 +10,7 @@
 
 -- Grabs some stuff
 require("sarcasticdream")
---
+
 -- Source coc config
 vim.api.nvim_command('source $HOME/.config/nvim/vconfs/coc.vim')
 
@@ -39,7 +39,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- Set undo settings
-vim.opt.undodir = '/home/sarcasticdream/.vim/undodir'
+vim.opt.undodir = '/home/alex/.vim/undodir'
 vim.opt.undofile = true
 
 -- Incremental search
@@ -60,8 +60,13 @@ vim.opt.relativenumber = true
 -- Clipboard shiz
 vim.opt.clipboard = 'unnamedplus'
 
--- Allows Transparency with different themes
-vim.api.nvim_command('highlight Normal guibg=NONE ctermbg=NONE')
-
 -- Set modifiable option to enable buffer modifications
 vim.o.modifiable = true
+
+-- vim.cmd("au ColorScheme * hi Normal ctermbg=None")
+vim.cmd("set statusline+=%F") 
+vim.o.termguicolors = true
+vim.cmd("colorscheme iceberg")
+
+-- Allows Transparency with different themes
+vim.api.nvim_command('highlight Normal guibg=NONE ctermbg=NONE')
