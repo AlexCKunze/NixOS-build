@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -7,69 +6,63 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking = {
-      hostName = "Arugala"; # Define your hostname.
-      networkmanager.enable = true;  # Enables wireless support via wpa_supplicant.
-      useDHCP = false;
+  boot.initrd.luks.devices = {
+    root = { 
+      device = "/dev/sda2";
+      preLVM = true;
+    };
   };
 
-  # Set your time zone.
+  networking.hostName = "thinkchad"; # Define your hostname.
+
   time.timeZone = "America/Chicago";
 
+  networking.useDHCP = false;
+  networking.networkmanager.enable = true;
 
-  # Xfce + i3-gaps.
   services.xserver = {
-      enable = true;
-      displayManager.lightdm.enable = true;
-      desktopManager.xfce.enable = true;
-      #displayManager.startx.enable = true;
-      #windowManager.dwm.enable = true;
-  };
-
-
+          enable = true;
+          displayManager.lightdm = {
+  #        displayManager.gdm = {
+  #                wayland = true;
+                  enable = true;
+              };
+          desktopManager.xfce.enable = true;
+      };
+  #programs.hyprland = {
+  #        enable = true;
+  #        xwayland.enable = true;
+  #    };
+  #services.cinnamon.apps.enable = false;
+  #services.xserver.displayManager.startx.enable = true;
+  #services.xserver.windowManager.dwm.enable = true;
   #nixpkgs.overlays = [
   #  (final: prev: {
-  #      dwm = prev.dwm.overrideAttrs (old: {src = /home/sarcasticdream/Documents/dwm-nixos/dwm ;});
+  #      dwm = prev.dwm.overrideAttrs (old: {src = /home/alex/dwm ;});
   #    })
   #];
 
-
-  # Lightdm Configuartion
   services.xserver.displayManager.lightdm = {
-      background = /root/wallpaper/storm.jpg;
-      greeters.gtk.theme.name = "Arc-Dark";
-      greeters.gtk.iconTheme.name = "Sardi-Mono-Colora"; 
+      background = /root/wallpaper/bg.jpg;
+      greeters.gtk.theme.name = "Plata-Noir";
+      greeters.gtk.iconTheme.name = "Mint-Y-Dark-Blue";
   };
 
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  programs.light.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sarcasticdream = {
+  users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "ratbagd" "wireshark" "disk" "docker" ];
-    shell = pkgs.zsh;
-  };
-
-  programs.zsh = {
-      enable = true;
-      syntaxHighlighting.enable = true;
-      enableBashCompletion = true;
+    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "wireshark" "libvirtd" "docker" ]; # Enable ‘sudo’ for the user.
+    home = "/home/alex";
   };
 
   nixpkgs.config = {
@@ -80,90 +73,114 @@
 	automatic = true;
 	dates = "weekly";
 	options = "--delete-older-than 7d";
-  };
+	};
 
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-
-    #ESSENTIAL PACKAGES
-    wget git curl python3 flatpak
-    neovim unzip zip tmux lm_sensors pfetch baobab gnome.gnome-disk-utility xclip picom openvpn gcc 
-    i3-gaps dmenu alacritty nitrogen rofi
-
-    #NON ESSENTIAL PACKAGES
-    gnome.gucharmap
-    rocm-opencl-runtime rocminfo
-    qtox
-    keepassxc bitwarden
-    gimp krita
-    lyrebird
-    shotwell
-    flameshot
-    gnome3.gnome-calculator
-    gnome.file-roller cinnamon.nemo
-
-    #XFCE PACKAGES
-    xfce.ristretto xfce.xfce4-whiskermenu-plugin
-    wireshark nmap dig yt-dlp gnome.networkmanager-openvpn
-    virt-manager spice-gtk
+    wget neovim alacritty git curl tmux unzip zip 
+    #gnome.file-roller python3
+    arc-theme plata-theme
+    brave qtox
+    i3-gaps
+    libreoffice gimp
+    xfce.xfce4-whiskermenu-plugin
+    #celluloid
+    xfce.thunar
+    nitrogen
     mpd ncmpcpp
-    libreoffice
+    bitwarden veracrypt
     obs-studio
-    celluloid
-    blender 
-    arc-theme
+    #(pkgs.wrapOBS {
+    #    plugins = with pkgs.obs-studio-plugins; [
+    #      wlrobs
+    #    ];
+    #})
+    wireshark nmap dig
+    #gnome3.gnome-disk-utility gnome3.gnome-system-monitor
+    lm_sensors
+    virt-manager
+    flameshot
     lxappearance
-    stellarium
-    libratbag piper
+    rofi
+    #wofi
+    #xdg-desktop-portal-hyprland
+    #(waybar.overrideAttrs (oldAttrs: {
+    #    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    #    }))
 
   ];
 
- 
   virtualisation = {
       libvirtd.enable = true;
       docker.enable = true;
-  };
+      };
+
   programs.dconf.enable = true;
   services.flatpak.enable = true;
   programs.wireshark.enable = true;
 
- 
+   programs.zsh = {
+      enable = true;
+      syntaxHighlighting.enable = true;
+  };
+  users.users.alex.shell = pkgs.zsh;
+
   xdg.portal = {
       enable = true;
       gtkUsePortal = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  hardware = {
-      opengl.driSupport32Bit = true;
-      opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-      #pulseaudio.support32Bit = true;
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  hardware.pulseaudio.support32Bit = true;
+  hardware.opengl.enable = true;
+
+  # List services that you want to enable:
+
+  # Power Saving
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+      battery = {
+          governor = "powersave";
+          turbo = "never";
+      };
+      charger = {
+          governor = "performance";
+          turbo = "auto";
+      };
   };
 
-  services.ratbagd.enable = true;
-  services.xserver.libinput.mouse.middleEmulation = false;
 
-  services.xserver.libinput.enable = true;
-  services.xserver.config = ''
-    Section "InputClass"
-      Identifier "mouse accel"
-      Driver "libinput"
-      MatchIsPointer "on"
-      Option "AccelProfile" "flat"
-      Option "AccelSpeed" "0"
-    EndSection
-  ''; 
+  services.tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 20;
+      };
+  };
+
+  services.thermald.enable = true;
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall = {
-      allowedTCPPorts = [ 8384 32222 42069 ];
-      allowedUDPPorts = [ 8384 32222 42069 ];
-      #enable = false;
-  };
+          allowedUDPPorts = [ 8384 ];
+          allowedTCPPorts = [ 8384 ];
+      };
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
-  system.stateVersion = "21.05"; # Don't Change
+  system.stateVersion = "20.09"; # Don't Change Value
 
 }
 
