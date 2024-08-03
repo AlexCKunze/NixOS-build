@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>zx", vim.cmd.Ex)
 
 -- Mega based netrw file manager
-vim.keymap.set("n", "<leader>zx", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>xz", vim.cmd.Rex)
 
 -- Commenting blocks of code
 vim.cmd([[

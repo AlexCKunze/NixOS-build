@@ -1,7 +1,7 @@
 # Prompt
-PS1=" %F{blue}✤SαɾƈαʂƚιƈDɾҽαɱ✤ %F{#828482}%~ "$'\n  %F{white1}↪ '"%F{reset}"
+PS1=" %F{cyan}✤SαɾƈαʂƚιƈDɾҽαɱ✤ %F{#828482}%~ "$'\n  %F{white1}↪ '"%F{reset}"
 
-PATH=$PATH:/home/sarcasticdream/Documents/projects/shellScripts/
+PATH=$PATH:/home/sarcasticdream/Documents/projects/shellScripts/:/home/sarcasticdream/Documents/projects/bash-site-gen
 
 NVIMPATH=$(whereis nvim | cut -d " " -f2)
 export EDITOR=$NVIMPATH
@@ -27,17 +27,8 @@ export KEYTIMEOUT=1
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Tmux auto exec
-if [ -z "$TMUX" ] && [ "$(echo $DISPLAY)" != "linux" ];
-then
-    tmux attach
-    if [ -z "$TMUX" ];
-    then
-        exit
-    fi
-fi
 
 # Aliases
-source ~/.bash_aliases
+source ~/.sh_aliases
 
 # Plugins are being sourced via /etc/nixos/configuration.nix, currently being used are (zsh-syntax-highlighting)

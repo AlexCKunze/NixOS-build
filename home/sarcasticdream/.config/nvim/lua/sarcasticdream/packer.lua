@@ -6,10 +6,10 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use({ 
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
+	  'cocopon/iceberg.vim',
+	  as = 'iceberg',
 	  config = function()
-		  vim.cmd('colorscheme rose-pine')
+		  vim.cmd('colorscheme iceberg')
 	  end
   })
 
