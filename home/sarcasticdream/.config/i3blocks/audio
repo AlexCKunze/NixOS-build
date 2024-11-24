@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+vol=$(amixer sget Master | grep 'Front Left:' | cut -d " " -f7 | tr -d '[,],%')
+
+if [ $vol -ge 80 ]; then echo  $vol%;
+elif [ $vol -ge 1 ]; then echo  $vol%; 
+elif [ $vol -eq 0 ]; then echo  $vol%; 
+fi

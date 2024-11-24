@@ -1,0 +1,28 @@
+markup=pango
+full_text="<span size='6000'>  </span>"
+align=center
+color=#ffffff
+separator=false
+separator_block_width=0
+background=#002b36
+[seperator]
+[ipv4]
+command=nmcli device show enp8s0 | grep IP4.ADDRESS | tr -s " " | cut -d " " -f2
+interval=600000
+[seperator]
+#[weather]
+#command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+#interval=60
+#[seperator]
+[moon]
+command=./moon
+interval=86400 #1 day
+[time]
+command=date "+%a %e %b %R %Z"
+interval=5
+[seperator]
+[audio]
+command=bash audio
+interval=once
+signal=10
+[seperator]
